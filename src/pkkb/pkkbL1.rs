@@ -1,4 +1,6 @@
 
+mod super::fifo;
+
 
 //impl MyStruct {
 //    const MY_STATIC: i32 = 123;
@@ -94,11 +96,34 @@ pub fn esc_decode(data: u8) -> u8 {
 	}
 }
 
+pub fn is_ctrl_code(data :u8) -> bool {
+	match data{
+		
+	}
+		return ((data == PKKB_SOF) || (data == PKKB_EOF) || (data == PKKB_ESC));
+	}
 
 	
 
 
- 
+fn encodeFrame(frameIn :&mut Fifo, frameOut :&mut Fifo) -> Result<(),bool>{
+		uint8_t znak;
+		if (!frameOut->put(PKKB_CtrlChar::PKKB_SOF))
+			return false;
+		while (frameIn->isNotEmpty()) {
+			znak = (uint8_t)frameIn->get();
+			if (is_ctrl_code(znak)) {
+				if (!frameOut->put(PKKB_CtrlChar::PKKB_ESC))
+					return false;
+				znak = esc_encode(znak);
+			}
+			if (!frameOut->put(znak))
+				return false;
+		}
+		if (!frameOut->put(PKKB_CtrlChar::PKKB_EOF))
+			return false;
+		return true;
+	} 
 
 
 

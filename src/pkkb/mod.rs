@@ -32,6 +32,4 @@ pub enum PkkbAssignCommand{
 		GET = 0x27,		
 }	
 
-pub fn test(){
-	println!("Test PKKB");
-}
+

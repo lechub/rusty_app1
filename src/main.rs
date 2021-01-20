@@ -5,6 +5,7 @@ extern crate clap;
 use clap::{Arg, App, SubCommand};
 
 pub mod pkkb;
+pub mod fifo;
 //pub mod pkkbL1;
 
 
