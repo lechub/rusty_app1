@@ -20,16 +20,16 @@ impl CtrlChar {
 	const ESC_VALUE: u8 = 0xAC;
     pub fn value(&self) -> u8 {
         match *self {
-            CtrlChar::SOF => CtrlChar::SOF_VALUE,
-            CtrlChar::EOF => CtrlChar::EOF_VALUE,
-			CtrlChar::ESC => CtrlChar::ESC_VALUE,
+            Self::SOF => Self::SOF_VALUE,
+            Self::EOF => Self::EOF_VALUE,
+			Self::ESC => Self::ESC_VALUE,
         }
     }
 	pub fn getEnum(data :u8) -> Option<CtrlChar> {
 		match data {
-			CtrlChar::SOF_VALUE => Some(CtrlChar::SOF),
-			CtrlChar::EOF_VALUE => Some(CtrlChar::EOF),
-			CtrlChar::ESC_VALUE => Some(CtrlChar::ESC),
+			Self::SOF_VALUE => Some(Self::SOF),
+			Self::EOF_VALUE => Some(Self::EOF),
+			Self::ESC_VALUE => Some(Self::ESC),
 			_ => None
 		}
 	}
@@ -47,16 +47,16 @@ impl EncodedChar {
 	const ESC_ESC_VALUE: u8 = 0x03;
     pub fn value(&self) -> u8 {
         match *self {
-            EncodedChar::ESC_SOF => EncodedChar::ESC_SOF_VALUE,
-            EncodedChar::ESC_EOF => EncodedChar::ESC_EOF_VALUE,
-			EncodedChar::ESC_ESC => EncodedChar::ESC_ESC_VALUE,
+            Self::ESC_SOF => Self::ESC_SOF_VALUE,
+            Self::ESC_EOF => Self::ESC_EOF_VALUE,
+			Self::ESC_ESC => Self::ESC_ESC_VALUE,
         }
     }
 	pub fn getEnum(data :u8) -> Option<EncodedChar> {
 		match data{
-			EncodedChar::ESC_SOF_VALUE => Some(EncodedChar::ESC_SOF),
-			EncodedChar::ESC_EOF_VALUE => Some(EncodedChar::ESC_EOF),
-			EncodedChar::ESC_ESC_VALUE => Some(EncodedChar::ESC_ESC),
+			Self::ESC_SOF_VALUE => Some(Self::ESC_SOF),
+			Self::ESC_EOF_VALUE => Some(Self::ESC_EOF),
+			Self::ESC_ESC_VALUE => Some(Self::ESC_ESC),
 			_ => None	
 		}
 	}
